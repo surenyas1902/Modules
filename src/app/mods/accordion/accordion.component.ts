@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-accordion',
@@ -7,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccordionComponent implements OnInit {
 
+  @Input() items = [];
+  openItemIndex = 0;
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onOpen(index: number) {
+    if (index === this.openItemIndex) {
+      this.openItemIndex = -1;
+    }
+    else {
+      this.openItemIndex = index;
+    }
   }
 
 }
